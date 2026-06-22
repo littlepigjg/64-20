@@ -4,6 +4,7 @@ import path from 'path';
 import { config } from './config';
 import { npmRouter, pypiRouter } from './modules/proxy';
 import { privatePkgRouter } from './modules/private-pkg';
+import { preheatRouter } from './modules/preheat';
 import { getMetadataIndex } from './modules/metadata';
 import { getCacheStorage } from './modules/cache';
 import { ensureDir } from './utils';
@@ -20,6 +21,7 @@ app.use((req, _res, next) => {
 });
 
 app.use('/api', privatePkgRouter);
+app.use('/api', preheatRouter);
 app.use('/npm', npmRouter);
 app.use('/pypi', pypiRouter);
 

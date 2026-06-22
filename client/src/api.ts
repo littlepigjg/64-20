@@ -7,6 +7,8 @@ import type {
   HealthInfo,
   RegistryType,
   PackageSource,
+  PreheatPackageInput,
+  PreheatTask,
 } from './types';
 
 const API_BASE = '/api';
@@ -87,6 +89,20 @@ export const api = {
 
   snapshot: () =>
     request<{ success: boolean; timestamp: number }>('/cache/snapshot', {
+      method: 'POST',
+    }),
+
+  startPreheat: (packages: PreheatPackageInput[]) =>
+    request<{ taskId: string; total: number }>('/preheat', {
+      method: 'POST',
+      body: JSON.stringify({ packages }),
+    }),
+
+  getPreheatTask: (taskId: string) =>
+    request<PreheatTask>(`/preheat/${taskId}`),
+
+  cancelPreheat: (taskId: string) =>
+    request<{ success: boolean; taskId: string }>(`/preheat/${taskId}/cancel`, {
       method: 'POST',
     }),
 };

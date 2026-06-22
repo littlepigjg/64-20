@@ -4,6 +4,7 @@ import {
   Package,
   Settings as SettingsIcon,
   Database,
+  Flame,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
@@ -13,6 +14,7 @@ import { formatSize } from '../utils';
 const navItems = [
   { path: '/dashboard', label: '统计面板', icon: LayoutDashboard },
   { path: '/packages', label: '包列表', icon: Package },
+  { path: '/preheat', label: '缓存预热', icon: Flame },
   { path: '/settings', label: '缓存策略', icon: SettingsIcon },
 ];
 

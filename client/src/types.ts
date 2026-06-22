@@ -1,5 +1,38 @@
 export type RegistryType = 'npm' | 'pypi';
 export type PackageSource = 'cache' | 'private' | 'upstream';
+export type PreheatTaskStatus = 'pending' | 'running' | 'completed' | 'cancelled';
+
+export interface PreheatPackageInput {
+  name: string;
+  registry: RegistryType;
+  version?: string;
+}
+
+export interface PreheatPackageResult {
+  name: string;
+  registry: RegistryType;
+  version: string;
+  status: 'success' | 'failed' | 'skipped';
+  size: number;
+  error?: string;
+  duration: number;
+}
+
+export interface PreheatTask {
+  id: string;
+  status: PreheatTaskStatus;
+  packages: PreheatPackageInput[];
+  total: number;
+  completed: number;
+  succeeded: number;
+  failed: number;
+  skipped: number;
+  results: PreheatPackageResult[];
+  startedAt: number | null;
+  completedAt: number | null;
+  estimatedEnd: number | null;
+  createdAt: number;
+}
 
 export interface PackageVersion {
   version: string;

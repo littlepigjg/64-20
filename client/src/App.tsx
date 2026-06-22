@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Packages from './pages/Packages';
 import Settings from './pages/Settings';
 import PackageDetail from './pages/PackageDetail';
+import Preheat from './pages/Preheat';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="packages" element={<Packages />} />
         <Route path="packages/:registry/:name" element={<PackageDetail />} />
+        <Route path="preheat" element={<Preheat />} />
         <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
